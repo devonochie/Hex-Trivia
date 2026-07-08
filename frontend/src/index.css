@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource/orbitron/400.css";
+@import "@fontsource/orbitron/700.css";
+@import "@fontsource/orbitron/900.css";
+@import "@fontsource/rajdhani/400.css";
+@import "@fontsource/rajdhani/600.css";
+@import "@fontsource/rajdhani/700.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-cyan: var(--cyan);
+  --color-purple-deep: var(--purple-deep);
+  --font-display: "Orbitron", ui-sans-serif, system-ui;
+  --font-body: "Rajdhani", ui-sans-serif, system-ui;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.18 0.14 300);
+  --foreground: oklch(0.98 0.01 90);
+  --card: oklch(0.24 0.16 300);
+  --card-foreground: oklch(0.98 0.01 90);
+  --primary: oklch(0.82 0.16 90);          /* gold */
+  --primary-foreground: oklch(0.2 0.14 300);
+  --secondary: oklch(0.32 0.18 300);
+  --secondary-foreground: oklch(0.98 0.01 90);
+  --muted: oklch(0.28 0.12 300);
+  --muted-foreground: oklch(0.78 0.05 300);
+  --accent: oklch(0.82 0.16 200);          /* cyan */
+  --accent-foreground: oklch(0.15 0.1 300);
+  --destructive: oklch(0.65 0.24 27);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border: oklch(0.35 0.14 300);
+  --input: oklch(0.28 0.12 300);
+  --ring: oklch(0.82 0.16 90);
+
+  --gold: #f0b91a;
+  --cyan: #4ee0ff;
+  --purple-deep: #2a0a4a;
+
+  --grad-bg: radial-gradient(ellipse at 30% 20%, #4a1580 0%, #2a0a4a 50%, #180530 100%);
+  --grid-tile: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+
+  --shadow-gold: 0 0 24px rgba(240,185,26,0.55), 0 0 60px rgba(240,185,26,0.25);
+  --shadow-cyan: 0 0 24px rgba(78,224,255,0.65), 0 0 60px rgba(78,224,255,0.3);
+}
+
+.dark { color-scheme: dark; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { min-height: 100%; }
+  body {
+    background: var(--grad-bg);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+}
+
+@utility bg-quiz-grid {
+  background-image: var(--grid-tile);
+  background-size: 28px 28px;
+}
+
+@utility hex-clip {
+  clip-path: polygon(12% 0, 88% 0, 100% 50%, 88% 100%, 12% 100%, 0 50%);
+}
+
+@utility answer-clip {
+  clip-path: polygon(6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%);
+}
+
+@utility glow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility glow-cyan {
+  box-shadow: var(--shadow-cyan);
+}
+
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@utility animate-flicker { animation: flicker 2.4s ease-in-out infinite; }
