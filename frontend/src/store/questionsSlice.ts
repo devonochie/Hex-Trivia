@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { QuestionsAPI, type NewQuestion, type Question } from "@/lib/api";
+import  { type Question, QuestionsAPI, type NewQuestion } from "../lib/api";
+
 
 interface QuestionsState {
   items: Question[];

@@ -22,13 +22,13 @@ class RouteErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundar
 
   render() {
     if (this.state.error) {
-      return <ErrorFallback error={this.state.error} reset={this.reset} />;
+      return <ErrorFallback reset={this.reset} />;
     }
     return this.props.children;
   }
 }
 
-function ErrorFallback({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorFallback({ reset }: { reset: () => void }) {
   const navigate = useNavigate();
 
   return (
